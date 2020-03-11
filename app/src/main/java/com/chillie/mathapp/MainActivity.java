@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new MyAdapter(myDataset);
-        recyclerView.setAdapter(mAdapter);
+        mAdapter = new MyAdapter(myDataset);  //ADAPTER
+        recyclerView.setAdapter(mAdapter);    //LINES
     }
 }
