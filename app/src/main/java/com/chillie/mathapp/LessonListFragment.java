@@ -15,7 +15,7 @@ import java.util.List;
 
 public class LessonListFragment extends Fragment {
     private RecyclerView mLessonRecyclerView;
-    private CrimeAdapter mAdapter;
+    private LessonAdapter mAdapter;
 
     @Override //method of fragments like onCreate activity
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,9 +30,9 @@ public class LessonListFragment extends Fragment {
     }
 
     private void updateUI() {
-        LessonLab crimeLab = LessonLab.get(getActivity());
-        List<Lesson> crimes = crimeLab.getLessons();
-        mAdapter = new CrimeAdapter(crimes);
+        LessonLab lessonLab = LessonLab.get(getActivity());
+        List<Lesson> lessons = lessonLab.getLessons();          //isos edo tha tha pezete i katifgoria mathimatos
+        mAdapter = new LessonAdapter(lessons);
         mLessonRecyclerView.setAdapter(mAdapter);
     }
 
@@ -45,7 +45,7 @@ public class LessonListFragment extends Fragment {
        private Lesson mLesson;
 
         private TextView mTitleTextView;
-        private TextView mDateTextView;
+        private TextView mKatigoriaMathimatosView;
 
         public LessonHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recyclerview_row, parent, false));
@@ -74,11 +74,11 @@ public class LessonListFragment extends Fragment {
 
 
 
-    private class CrimeAdapter extends RecyclerView.Adapter<LessonHolder> {
+    private class LessonAdapter extends RecyclerView.Adapter<LessonHolder> {
 
         private List<Lesson> mLessons;
 
-        public CrimeAdapter(List<Lesson> lessons) {
+        public LessonAdapter(List<Lesson> lessons) {
             mLessons = lessons;
         }
 
