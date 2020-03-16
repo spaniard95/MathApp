@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Lesson {
 
-    private String mTitle;
+    private String mTitle,mCategory;
     private UUID mId;
 
     public Lesson(){
@@ -25,5 +25,17 @@ public class Lesson {
 
     public void setId(UUID id) {
         mId = id;
+    }
+
+    public String getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(String category) {
+        mCategory = category;
+    }
+
+    public boolean isPassed() { //theli kai alli dulia
+        return true;
     }
 }

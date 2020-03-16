@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,19 +46,24 @@ public class LessonListFragment extends Fragment {
        private Lesson mLesson;
 
         private TextView mTitleTextView;
-        private TextView mKatigoriaMathimatosView;
+        private TextView mLessonCategoryView;
+        private ImageView mPassed;
 
         public LessonHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recyclerview_row, parent, false));
             itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.lesson_title);
+            mLessonCategoryView=(TextView)itemView.findViewById(R.id.lesson_category);
+            mPassed=(ImageView)itemView.findViewById(R.id.imageView);
 
         }
 
         public void bind(Lesson lesson) {
             mLesson = lesson;
             mTitleTextView.setText(mLesson.getTitle());
+            mLessonCategoryView.setText(mLesson.getCategory());
+            mPassed.setVisibility(lesson.isPassed() ? View.VISIBLE : View.GONE);
 
         }
 
@@ -96,6 +102,7 @@ public class LessonListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+
             return mLessons.size();
         }
     }

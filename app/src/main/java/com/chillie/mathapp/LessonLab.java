@@ -24,6 +24,7 @@ public class LessonLab {
         for (int i = 0; i < 36; i++) {
             Lesson lesson =new Lesson();
             lesson.setTitle("lesson"+i);
+            lesson.setCategory("ipoxreotiko");
             mLessons.add(lesson);
         }
     }
