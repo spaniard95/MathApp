@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class LessonListFragment extends Fragment {
-    private RecyclerView mCrimeRecyclerView;
+    private RecyclerView mLessonRecyclerView;
     private CrimeAdapter mAdapter;
 
     @Override //method of fragments like onCreate activity
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_fragment, container, false);
+        View view = inflater.inflate(R.layout.activity_main, container, false);
 
-        mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
-        mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mLessonRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        mLessonRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
 
@@ -33,7 +33,7 @@ public class LessonListFragment extends Fragment {
         LessonLab crimeLab = LessonLab.get(getActivity());
         List<Lesson> crimes = crimeLab.getLessons();
         mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+        mLessonRecyclerView.setAdapter(mAdapter);
     }
 
 
