@@ -1,5 +1,6 @@
 package com.chillie.mathapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,14 +64,17 @@ public class LessonListFragment extends Fragment {
             mLesson = lesson;
             mTitleTextView.setText(mLesson.getTitle());
             mLessonCategoryView.setText(mLesson.getCategory());
-            mPassed.setVisibility(lesson.isPassed() ? View.VISIBLE : View.GONE);
+            mPassed.setVisibility(mLesson.isPassed() ? View.VISIBLE : View.GONE);
 
         }
 
        @Override
         public void onClick(View view) {
-            Toast.makeText(getActivity(), mLesson.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
-        }
+          //  Toast.makeText(getActivity(), mLesson.getTitle() + " clicked!", Toast.LENGTH_SHORT).show();
+          // Intent intent = new Intent(getActivity(),LessonActivity.class);
+           Intent intent=LessonActivity.newIntent(getActivity(),mLesson.getId());
+           startActivity(intent);
+       }
     }
 
 

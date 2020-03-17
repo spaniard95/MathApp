@@ -5,7 +5,16 @@ import java.util.UUID;
 public class Lesson {
 
     private String mTitle,mCategory;
+    private String mGrade="  null";
     private UUID mId;
+
+    public String getGrade() {
+        return mGrade;
+    }
+
+    public void setGrade(String grade) {
+        mGrade = grade;
+    }
 
     public Lesson(){
         mId = UUID.randomUUID();
