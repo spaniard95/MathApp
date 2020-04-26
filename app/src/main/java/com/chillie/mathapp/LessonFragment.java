@@ -27,7 +27,9 @@ public class LessonFragment extends Fragment {
         UUID lessonId = (UUID) getActivity().getIntent().getSerializableExtra(LessonActivity.EXTRA_LESSON_ID);
         mLesson=LessonLab.get(getActivity()).getLesson(lessonId);
     }
-
+    @Override public void onPause() {
+        super.onPause();
+        LessonLab.get(getActivity()).updateCrime(mLesson); }
     @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_lesson, container, false);

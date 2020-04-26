@@ -59,7 +59,7 @@
             android:id="@+id/lesson_grade_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Insert grade here"/>
+            android:hint="type grade"/>
 
         <TextView
             android:id="@+id/lesson_saved_grade"

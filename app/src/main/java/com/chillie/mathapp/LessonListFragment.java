@@ -44,8 +44,7 @@ public class LessonListFragment extends Fragment {
 
     private class LessonHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-       private Lesson mLesson;
-
+        private Lesson mLesson;
         private TextView mTitleTextView;
         private TextView mLessonCategoryView;
         private ImageView mPassed;
@@ -108,6 +107,9 @@ public class LessonListFragment extends Fragment {
         public int getItemCount() {
 
             return mLessons.size();
+        }
+        public void setLessons(List<Lesson> lessons) {
+            mLessons = lessons;
         }
     }
 

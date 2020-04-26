@@ -17,8 +17,12 @@ public class Lesson {
     }
 
     public Lesson(){
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+        // mId = UUID.randomUUID();
         }
+    public Lesson(UUID id) {
+        mId = id;
+     }
 
     public String getTitle() {
         return mTitle;
