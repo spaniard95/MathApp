@@ -54,18 +54,26 @@
             android:layout_height="wrap_content"
             android:text="ΒΑΘΜΟΣ"
             android:textSize="20sp"
+            android:paddingRight="10dp"/>
+        <TextView
+            android:id="@+id/lesson_saved_grade"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingRight="60dp"/>
         <EditText
             android:id="@+id/lesson_grade_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="type grade"/>
-
-        <TextView
-            android:id="@+id/lesson_saved_grade"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE" />
     </LinearLayout>
+
+
 
 </LinearLayout>
 

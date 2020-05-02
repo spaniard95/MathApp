@@ -5,7 +5,7 @@ import java.util.UUID;
 public class Lesson {
 
     private String mTitle,mCategory;
-    private String mGrade="  null";
+    private String mGrade="";
     private UUID mId;
 
     public String getGrade() {
@@ -49,6 +49,7 @@ public class Lesson {
     }
 
     public boolean isPassed() { //theli kai alli dulia
-        return true;
+        if(mGrade.equals("5"))return true;
+        else return false;
     }
 }

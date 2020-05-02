@@ -18,7 +18,15 @@ import java.util.List;
 public class LessonListFragment extends Fragment {
     private RecyclerView mLessonRecyclerView;
     private LessonAdapter mAdapter;
+    private int category;
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.category = (int) getActivity().getIntent().getSerializableExtra(LessonListActivity.EXTRA_CATEGORY_ID);
+
+    }
     @Override //method of fragments like onCreate activity
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main, container, false);
@@ -30,17 +38,23 @@ public class LessonListFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
 
     private void updateUI() {
         LessonLab lessonLab = LessonLab.get(getActivity());
-        List<Lesson> lessons = lessonLab.getLessons();          //isos edo tha tha pezete i katifgoria mathimatos
-        mAdapter = new LessonAdapter(lessons);
-        mLessonRecyclerView.setAdapter(mAdapter);
+        List<Lesson> lessons = lessonLab.getLessons(category);          //isos edo tha tha pezete i katifgoria mathimatos
+        if (mAdapter == null) {
+            mAdapter = new LessonAdapter(lessons);
+            mLessonRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.setLessons(lessons);
+            mAdapter.notifyDataSetChanged();
+        }
     }
-
-
-
-
 
     private class LessonHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -48,6 +62,7 @@ public class LessonListFragment extends Fragment {
         private TextView mTitleTextView;
         private TextView mLessonCategoryView;
         private ImageView mPassed;
+        private TextView mGrade;
 
         public LessonHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recyclerview_row, parent, false));
@@ -55,16 +70,18 @@ public class LessonListFragment extends Fragment {
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.lesson_title);
             mLessonCategoryView=(TextView)itemView.findViewById(R.id.lesson_category);
+            mGrade=(TextView)itemView.findViewById(R.id.grade_row);
             mPassed=(ImageView)itemView.findViewById(R.id.imageView);
-
         }
-
         public void bind(Lesson lesson) {
             mLesson = lesson;
             mTitleTextView.setText(mLesson.getTitle());
             mLessonCategoryView.setText(mLesson.getCategory());
-            mPassed.setVisibility(mLesson.isPassed() ? View.VISIBLE : View.GONE);
-
+            if(mLesson.isPassed()) mPassed.setVisibility(View.VISIBLE);
+            else {
+                mPassed.setVisibility(View.GONE);
+            }
+            mGrade.setText("ΒΑΘΜΟΣ :"+mLesson.getGrade());
         }
 
        @Override
@@ -75,15 +92,7 @@ public class LessonListFragment extends Fragment {
            startActivity(intent);
        }
     }
-
-
-
-
-
-
-
-
-    private class LessonAdapter extends RecyclerView.Adapter<LessonHolder> {
+ private class LessonAdapter extends RecyclerView.Adapter<LessonHolder> {
 
         private List<Lesson> mLessons;
 
@@ -105,13 +114,10 @@ public class LessonListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-
             return mLessons.size();
         }
         public void setLessons(List<Lesson> lessons) {
             mLessons = lessons;
         }
     }
-
-
 }

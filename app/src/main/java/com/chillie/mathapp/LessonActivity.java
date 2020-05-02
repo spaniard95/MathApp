@@ -21,4 +21,6 @@ public class LessonActivity extends SingleFragmentActivity {
 
         return new LessonFragment();
     }
+
+
 }
